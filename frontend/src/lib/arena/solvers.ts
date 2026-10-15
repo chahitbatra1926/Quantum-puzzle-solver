@@ -1,7 +1,7 @@
 export type SolverId='exact'|'heuristic'|'annealing';
 export type Snapshot={candidate:number[];score:number;iteration:number;temperature:number;elapsed:number};
 export type Trace={id:SolverId;frames:Snapshot[];exact:boolean;solved:boolean};
-export type PuzzleConfig={puzzle:'queens'|'knapsack';size:number;seed:number;capacity:number;temperature:number};
+export type PuzzleConfig={puzzle:'queens'|'knapsack'|'sudoku';size:number;seed:number;capacity:number;temperature:number};
 export const items=[{name:'Crystal',weight:4,value:12},{name:'Core',weight:7,value:18},{name:'Prism',weight:3,value:8},{name:'Beacon',weight:6,value:15},{name:'Chip',weight:2,value:7},{name:'Alloy',weight:5,value:11},{name:'Lens',weight:4,value:10},{name:'Relic',weight:8,value:20}];
 export function seeded(seed:number){let x=seed>>>0;return ()=>{x=(Math.imul(x,1664525)+1013904223)>>>0;return x/4294967296;};}
 export function conflicts(p:number[]){let total=0;for(let r=0;r<p.length;r++)for(let j=r+1;j<p.length;j++){const a=p[r],b=p[j];if(a===undefined||b===undefined||a<0||b<0)continue;if(a===b||Math.abs(a-b)===j-r)total++;}return total;}
